@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: researchmate-ai-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: EMBEDDING_PROVIDER
+        value: gemini
+      - key: CHROMA_MODE
+        value: cloud
