@@ -27,12 +27,18 @@ class GeminiLLMService:
         return self._client
 
     def _models_to_try(self) -> List[str]:
-        models = [self.settings.GEMINI_PRIMARY_MODEL]
-        if (
-            self.settings.GEMINI_FALLBACK_MODEL
-            and self.settings.GEMINI_FALLBACK_MODEL not in models
-        ):
-            models.append(self.settings.GEMINI_FALLBACK_MODEL)
+        candidates = [
+            self.settings.GEMINI_PRIMARY_MODEL,
+            self.settings.GEMINI_FALLBACK_MODEL,
+            "gemini-3-flash-preview",
+            "gemini-3.5-flash-lite",
+            "gemini-flash-lite-latest",
+            "gemini-3.8-flash",
+        ]
+        models: List[str] = []
+        for model in candidates:
+            if model and model not in models:
+                models.append(model)
         return models
 
     def generate_text(

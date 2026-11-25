@@ -23,12 +23,12 @@ class Settings(BaseSettings):
 
     # Google Gemini
     GEMINI_API_KEY: str = ""
-    GEMINI_PRIMARY_MODEL: str = "gemini-2.5-flash"
-    GEMINI_FALLBACK_MODEL: str = "gemini-2.0-flash"
+    GEMINI_PRIMARY_MODEL: str = "gemini-3-flash-preview"
+    GEMINI_FALLBACK_MODEL: str = "gemini-3.5-flash-lite"
 
     # RAG & Vector DB
     EMBEDDING_PROVIDER: str = "gemini"
-    GEMINI_EMBEDDING_MODEL: str = "models/text-embedding-004"
+    GEMINI_EMBEDDING_MODEL: str = "models/gemini-embedding-001"
     SENTENCE_TRANSFORMER_MODEL: str = "all-MiniLM-L6-v2"
 
     CHROMA_MODE: str = "persistent"
